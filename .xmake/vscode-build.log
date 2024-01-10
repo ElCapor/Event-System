@@ -1,0 +1,4 @@
+[ 25%]: compiling.debug src\main.cpp
+src\main.cpp(25): warning C4189: 'evt': local variable is initialized but not referenced
+[ 50%]: linking.debug EventSystem.exe
+[100%]: build ok, spent 2.437s

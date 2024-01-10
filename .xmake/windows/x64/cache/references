@@ -1,0 +1,8 @@
+{
+    packages = {
+        [[C:\Users\HP\AppData\Local\.xmake\packages\o\opengl\latest\8574311f4b544fa89a3d8c3ee79d1929]],
+        [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54]],
+        [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86]],
+        [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01]]
+    }
+}
