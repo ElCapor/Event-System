@@ -3,7 +3,13 @@
 #include <iostream>
 #include <lua.hpp>
 #include <vector>
+/*
 
+GENERAL TODO:
+
+Convert Singleton to return pointers
+
+*/
 class TestEvent : public Event
 {
 public:
@@ -98,14 +104,21 @@ class LuaClosure
 public:
 static LuaClosureID maxID; // maxID used
 LuaClosureID id; // id of current closure
-LuaClosure()
-{
-    maxID++;
-    id = maxID;
-}
+    LuaClosure()
+    {
+        maxID++;
+        id = maxID;
+    }
+    void CallFunc()
+    {
+        std::cout << "call lua closure" << std::endl;
+    }
 };
+LuaClosureID LuaClosure::maxID = -1;
+
 
 // abstract class to represent a connection to an event withnin lua
+// NOTE : no subscribe feature because eventconnector only connect to 1 event
 class EventConnector : public EventListener
 {
 public:
@@ -114,13 +127,13 @@ std::vector<LuaClosure> m_Closures; // list of connected closures
 
 EventConnector(EventType tp) : type(tp)
 {
-
 }
 
 // -1 if not working
 LuaClosureID Connect()
 {
-
+    m_Closures.emplace_back(LuaClosure());
+    EventManager::getInstance().Subscribe(type, this);
 }
 
 // -1 if not working
@@ -129,11 +142,24 @@ bool Disconnect()
 
 }
 
+void OnEvent(Event* recieved) override
+{
+    switch (recieved->m_type)
+    {
+        if (recieved->m_type == type)
+        {
+            for (auto& closure : m_Closures)
+            {
+                closure.CallFunc();
+            }
+        }
+    }
+}
+
 };
 
 int main()
 {
-    LuaClosure::maxID = -1;
     
     TestEvent evt = TestEvent();
     TestEventListener tev = TestEventListener();
@@ -143,6 +169,8 @@ int main()
     SetTargetFPS(60);
     EventManager::getInstance().SendEvent(&evt);
 
+    auto lua_conn = EventConnector(EventType::e_LuaEvent);
+    EventManager::getInstance().SendEvent(&evt);
     while (!WindowShouldClose())
     {
         BeginDrawing();

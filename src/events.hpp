@@ -40,6 +40,7 @@ enum EventType
 {
   e_GameStartEvent = 0,
   e_TestEvent = 1,
+  e_LuaEvent = 2,
   e_EventTypeMax
 };
 
