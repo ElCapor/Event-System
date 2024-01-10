@@ -4,6 +4,7 @@
         [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\update_intellisense.lua .vscode clangd]],
         "xmake -w",
         [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\explorer.lua]],
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\config.lua]]
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\config.lua]],
+        "xmake check"
     }
 }

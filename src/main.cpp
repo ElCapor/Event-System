@@ -2,6 +2,7 @@
 #include "events.hpp"
 #include <iostream>
 #include <lua.hpp>
+#include <vector>
 
 class TestEvent : public Event
 {
@@ -89,25 +90,50 @@ public:
     }
 };
 
+using LuaClosureID = int;
+
 // abstract class to represent a lua closure
 class LuaClosure
 {
-
+public:
+static LuaClosureID maxID; // maxID used
+LuaClosureID id; // id of current closure
+LuaClosure()
+{
+    maxID++;
+    id = maxID;
+}
 };
-
 
 // abstract class to represent a connection to an event withnin lua
 class EventConnector : public EventListener
 {
 public:
 EventType type; // type of the event we connect to
+std::vector<LuaClosure> m_Closures; // list of connected closures
 
+EventConnector(EventType tp) : type(tp)
+{
+
+}
+
+// -1 if not working
+LuaClosureID Connect()
+{
+
+}
+
+// -1 if not working
+bool Disconnect()
+{
+
+}
 
 };
 
 int main()
 {
-
+    LuaClosure::maxID = -1;
     
     TestEvent evt = TestEvent();
     TestEventListener tev = TestEventListener();
