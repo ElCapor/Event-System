@@ -1,6 +1,6 @@
 [ 25%]: compiling.debug src\main.cpp
-src\main.cpp(33): warning C4189: 'evt': local variable is initialized but not referenced
-src\main.cpp(75): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-src\main.cpp(78): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+src\main.cpp(54): warning C4189: 'evt': local variable is initialized but not referenced
+src\main.cpp(305): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+src\main.cpp(308): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 [ 50%]: linking.debug EventSystem.exe
-[100%]: build ok, spent 2.094s
+[100%]: build ok, spent 3.266s

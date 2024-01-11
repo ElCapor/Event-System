@@ -11,7 +11,31 @@ GENERAL TODO:
 
 Convert Singleton to return pointers
 
+GENERAL NOTES :
+never send structures through pointers when inside lua bound functions or else the memory will fuck up
+
+
 */
+
+typedef struct
+{
+    int line; // code line the error is at
+    std::string errorMsg;
+} LuaErrorStruct;
+
+
+class LuaVM : public Singleton<LuaVM>
+{
+public:
+    lua_State* luaState;
+
+    void Init();
+    bool RunScriptSafe(std::string script, LuaErrorStruct &errorStruct); // prevent rce and allow to return error type & numbers
+    void RunUnitTests();
+    lua_State*& GetState();
+};
+
+
 class TestEvent : public Event
 {
 public:
@@ -38,66 +62,6 @@ public:
     }
 };
 
-typedef struct
-{
-    int line; // code line the error is at
-    std::string errorMsg;
-} LuaErrorStruct;
-
-class LuaVM : Singleton<LuaVM>
-{
-public:
-    lua_State *luaState;
-    void Init()
-    {
-        luaState = luaL_newstate();
-        luaL_openlibs(luaState);
-    }
-
-    bool RunScriptSafe(std::string script, LuaErrorStruct &errorStruct) // prevent rce and allow to return error type & numbers
-    {
-        if (luaL_loadstring(luaState, script.c_str()) == LUA_OK)
-        {
-            if (lua_pcall(luaState, 0, LUA_MULTRET, 0) != LUA_OK)
-            {
-                goto PostError;
-            }
-            return true;
-        }
-        else
-        {
-            goto PostError;
-        }
-
-    PostError:
-        const char *errorStr = lua_tostring(luaState, -1);
-        if (errorStr != nullptr)
-        {
-            std::string errorfr = std::string(errorStr);
-            int line = errorfr.find("]:") + 2;
-            int codeline = std::atoi((errorfr.substr(line, errorfr.find(":", line) - line)).c_str());
-            errorStruct.line = codeline;
-            int line2 = errorfr.find(":", line) + 1;
-            errorStruct.errorMsg = errorfr.substr(line2);
-            lua_pop(luaState, 1);
-            return false;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    void RunUnitTests()
-    {
-        LuaErrorStruct err;
-        const char *script = R"(
-
-        )";
-        LuaVM::getInstance().RunScriptSafe(script, err);
-        std::cout << err.errorMsg << std::endl;
-    }
-};
 
 using LuaClosureID = int;
 
@@ -107,14 +71,26 @@ class LuaClosure
 public:
     static LuaClosureID maxID; // maxID used
     LuaClosureID id;           // id of current closure
+    int ref; // reference to the colsure in the lua registery
+
     LuaClosure()
     {
         maxID++;
         id = maxID;
     }
-    void CallFunc()
+    // a closure only makes sense inside a lua state
+    void CallFunc(lua_State* L)
     {
-        std::cout << "call lua closure" << std::endl;
+        lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
+        luaL_checktype(L, -1, LUA_TFUNCTION); // Just to be sure
+        lua_call(L, 0, 0);
+    }
+
+    void Delete(lua_State* L)
+    {
+        lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
+        luaL_checktype(L, -1, LUA_TFUNCTION); // Just to be sure
+        luaL_unref(L, LUA_REGISTRYINDEX, ref); // assuming you're done with it
     }
 };
 LuaClosureID LuaClosure::maxID = -1;
@@ -136,9 +112,9 @@ public:
     }
 
     // -1 if not working
-    LuaClosureID Connect()
+    LuaClosureID Connect(LuaClosure closure)
     {
-        m_Closures.emplace_back(LuaClosure());
+        m_Closures.emplace_back(closure);
         EventManager::getInstance().Subscribe(type, this);
         return 1;
     }
@@ -154,7 +130,7 @@ public:
         {
             for (auto &closure : m_Closures)
             {
-                closure.CallFunc();
+                closure.CallFunc(LuaVM::getInstance().GetState());
             }
         }
     }
@@ -175,15 +151,32 @@ auto IndexConnector = [](lua_State* L) -> int
 
     EventConnector* obj = (EventConnector*)lua_touserdata(L, -2);
     const char* index = lua_tostring(L, -1);
-    lua_getglobal(L, "EventConnector");
-    lua_pushstring(L, index);
-    lua_rawget(L, -2); // this will return nil
-    return 1;
 
+    if (strcmp(index, "Type") == 0)
+    {
+        lua_pushinteger(L, (int)obj->type);
+        return 1;
+    }
+    else {
+        lua_getglobal(L, "EventConnector");
+        lua_pushstring(L, index);
+        lua_rawget(L, -2); // this will return nil
+        return 1;
 
-
+    }
 };
 
+auto ConnectEvent = [](lua_State* L) -> int
+{
+    luaL_checkudata(L, 1, "EventConnectorMetatable");
+    luaL_checktype(L, 2, LUA_TFUNCTION);
+    EventConnector* obj = (EventConnector*)lua_touserdata(L, -2);
+    LuaClosure cl = LuaClosure();
+    cl.ref = luaL_ref(L, LUA_REGISTRYINDEX);
+    obj->Connect(cl);
+    lua_pushinteger(L, cl.id);
+    return 1;
+};
 void RegisterConnectorLua(lua_State* L)
 {
     lua_newtable(L);
@@ -191,7 +184,10 @@ void RegisterConnectorLua(lua_State* L)
     lua_pushvalue(L, idk);
     lua_setglobal(L, "EventConnector");
 
-    luaL_newmetatable(L, "EventConnectorMetaTable");
+    lua_pushcfunction(L, ConnectEvent);
+    lua_setfield(L, -2, "Connect");
+
+    luaL_newmetatable(L, "EventConnectorMetatable");
     lua_pushstring(L, "__gc");
     lua_pushcfunction(L, DestroyConnector);
     lua_settable(L, -3);
@@ -241,16 +237,17 @@ auto IndexObject = [](lua_State* L) -> int
         lua_pushinteger(L, obj->value);
         return 1;
     }
-
-
-
+    if (strcmp(index, "OnCreate") == 0)
+    {
+        lua_pushlightuserdata(L, &obj->OnCreate);
+        luaL_getmetatable(L, "EventConnectorMetatable");
+        lua_setmetatable(L, -2);
+        return 1;
+    }
+    return 0;
 };
 
 
-auto ConnectEvent = [](lua_State* L) -> int
-{
-
-};
 
 void RegisterObjectLua(lua_State *L)
 {
@@ -258,9 +255,6 @@ void RegisterObjectLua(lua_State *L)
     auto idk = lua_gettop(L);
     lua_pushvalue(L, idk);
     lua_setglobal(L, "FunnyObject");
-
-    lua_pushcfunction(L, ConnectEvent);
-    lua_setfield(L, -2, "Connect");
 
     luaL_newmetatable(L, "FunnyObjectMetaTable");
     lua_pushstring(L, "__gc");
@@ -272,6 +266,77 @@ void RegisterObjectLua(lua_State *L)
     lua_settable(L, -3);
 }
 
+namespace globals{
+    FunnyObject object;
+};
+
+
+
+void LuaVM::Init()
+{
+    luaState = luaL_newstate();
+    luaL_openlibs(luaState);
+
+    RegisterConnectorLua(luaState);
+    RegisterObjectLua(luaState);
+
+    lua_pushlightuserdata(luaState, &globals::object);
+    luaL_getmetatable(luaState, "FunnyObjectMetaTable");
+    lua_setmetatable(luaState, -2);
+    lua_setglobal(luaState, "Object");
+}
+
+bool LuaVM::RunScriptSafe(std::string script, LuaErrorStruct &errorStruct) // prevent rce and allow to return error type & numbers
+{
+    if (luaL_loadstring(luaState, script.c_str()) == LUA_OK)
+    {
+        if (lua_pcall(luaState, 0, LUA_MULTRET, 0) != LUA_OK)
+        {
+            goto PostError;
+        }
+        return true;
+    }
+    else
+    {
+        goto PostError;
+    }
+
+PostError:
+    const char *errorStr = lua_tostring(luaState, -1);
+    if (errorStr != nullptr)
+    {
+        std::string errorfr = std::string(errorStr);
+        int line = errorfr.find("]:") + 2;
+        int codeline = std::atoi((errorfr.substr(line, errorfr.find(":", line) - line)).c_str());
+        errorStruct.line = codeline;
+        int line2 = errorfr.find(":", line) + 1;
+        errorStruct.errorMsg = errorfr.substr(line2);
+        lua_pop(luaState, 1);
+        return false;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void LuaVM::RunUnitTests()
+{
+    LuaErrorStruct err;
+    const char *script = R"(
+        print(Object.name)
+        print(Object.OnCreate:Connect(function() print("hi") end))
+    )";
+    LuaVM::getInstance().RunScriptSafe(script, err);
+    std::cout << err.errorMsg << std::endl;
+}
+
+lua_State*& LuaVM::GetState()
+{
+    return this->luaState;
+}
+
+
 int main()
 {
 
@@ -279,20 +344,26 @@ int main()
     TestEventListener tev = TestEventListener();
     EventManager::getInstance().Subscribe(EventType::e_TestEvent, &tev);
 
-    InitWindow(800, 600, "EventSystem");
-    SetTargetFPS(60);
+    //InitWindow(800, 600, "EventSystem");
+    //SetTargetFPS(60);
     EventManager::getInstance().SendEvent(&evt);
 
-    auto lua_conn = EventConnector(EventType::e_LuaEvent);
-    lua_conn.Connect();
-    Event lua_ev = Event(EventType::e_LuaEvent);
+    //auto lua_conn = EventConnector(EventType::e_LuaEvent);
+    //lua_conn.Connect();
+    Event lua_ev = Event(EventType::e_FunnyObjectCreate);
     EventManager::getInstance().SendEvent(&lua_ev);
+    globals::object = FunnyObject();
+    LuaVM::getInstance().Init();
+    LuaVM::getInstance().RunUnitTests();
+
+    EventManager::getInstance().SendEvent(&lua_ev);
+    /*    
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(WHITE);
         EndDrawing();
     }
-    CloseWindow();
+    CloseWindow();*/
     return 0;
 }
