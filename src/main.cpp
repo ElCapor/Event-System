@@ -1,15 +1,16 @@
 #include <raylib.h>
 #include "events.hpp"
 #include <iostream>
-#include <lua.hpp>
-#include <vector>
 #include <string>
 #include <assert.h>
+#include "LuaVM/LuaVM.hpp"
+#include "LuaVM/EventConnector.hpp"
 /*
 
 GENERAL TODO:
 
 Convert Singleton to return pointers
+Convert EventSystem to use templates
 
 GENERAL NOTES :
 never send structures through pointers when inside lua bound functions or else the memory will fuck up
@@ -17,23 +18,6 @@ never send structures through pointers when inside lua bound functions or else t
 
 */
 
-typedef struct
-{
-    int line; // code line the error is at
-    std::string errorMsg;
-} LuaErrorStruct;
-
-
-class LuaVM : public Singleton<LuaVM>
-{
-public:
-    lua_State* luaState;
-
-    void Init();
-    bool RunScriptSafe(std::string script, LuaErrorStruct &errorStruct); // prevent rce and allow to return error type & numbers
-    void RunUnitTests();
-    lua_State*& GetState();
-};
 
 
 class TestEvent : public Event
@@ -62,79 +46,7 @@ public:
     }
 };
 
-
-using LuaClosureID = int;
-
-// abstract class to represent a lua closure
-class LuaClosure
-{
-public:
-    static LuaClosureID maxID; // maxID used
-    LuaClosureID id;           // id of current closure
-    int ref; // reference to the colsure in the lua registery
-
-    LuaClosure()
-    {
-        maxID++;
-        id = maxID;
-    }
-    // a closure only makes sense inside a lua state
-    void CallFunc(lua_State* L)
-    {
-        lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
-        luaL_checktype(L, -1, LUA_TFUNCTION); // Just to be sure
-        lua_call(L, 0, 0);
-    }
-
-    void Delete(lua_State* L)
-    {
-        lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
-        luaL_checktype(L, -1, LUA_TFUNCTION); // Just to be sure
-        luaL_unref(L, LUA_REGISTRYINDEX, ref); // assuming you're done with it
-    }
-};
 LuaClosureID LuaClosure::maxID = -1;
-
-// abstract class to represent a connection to an event withnin lua
-// NOTE : no subscribe feature because eventconnector only connect to 1 event
-class EventConnector : public EventListener
-{
-public:
-    EventType type;                     // type of the event we connect to
-    std::vector<LuaClosure> m_Closures; // list of connected closures
-
-    EventConnector()
-    {
-        type = EventType::e_NoneTypeEvent;
-    }
-    EventConnector(EventType tp) : type(tp)
-    {
-    }
-
-    // -1 if not working
-    LuaClosureID Connect(LuaClosure closure)
-    {
-        m_Closures.emplace_back(closure);
-        EventManager::getInstance().Subscribe(type, this);
-        return 1;
-    }
-
-    // -1 if not working
-    bool Disconnect()
-    {
-    }
-
-    void OnEvent(Event *recieved) override
-    {
-        if (recieved->m_type == type)
-        {
-            for (auto &closure : m_Closures)
-            {
-                closure.CallFunc(LuaVM::getInstance().GetState());
-            }
-        }
-    }
-};
 
 auto DestroyConnector = [](lua_State* L) -> int
 {
