@@ -10,6 +10,14 @@
         "xmake -w",
         [[xmake lua "C:\\\\Program Files\\\\xmake\\\\modules\\\\private\\\\utils\\\\statistics.lua"]],
         "xmake -w",
-        "xmake -w"
+        "xmake -w",
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\target_informations.lua default]],
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\target_informations.lua default]],
+        "xmake -w",
+        "xmake -w",
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\target_informations.lua default]],
+        "xmake -w",
+        "xmake -w",
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\target_informations.lua default]]
     }
 }

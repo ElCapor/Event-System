@@ -2,10 +2,10 @@
     mtimes = {
         ["xmake.lua"] = 1704912129
     },
+    recheck = false,
     options = {
-        mode = "debug",
         plat = "windows",
+        mode = "debug",
         arch = "x64"
-    },
-    recheck = false
+    }
 }

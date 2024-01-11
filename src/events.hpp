@@ -38,9 +38,11 @@ using UniqueContainer = std::unordered_set<T>;
 
 enum EventType
 {
+  e_NoneTypeEvent = -1,
   e_GameStartEvent = 0,
   e_TestEvent = 1,
   e_LuaEvent = 2,
+  e_FunnyObjectCreate = 3,
   e_EventTypeMax
 };
 

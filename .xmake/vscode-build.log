@@ -2,9 +2,5 @@
 src\main.cpp(33): warning C4189: 'evt': local variable is initialized but not referenced
 src\main.cpp(75): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 src\main.cpp(78): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-src\main.cpp(156): warning C4060: switch statement contains no 'case' or 'default' labels
-C:\Users\HP\Desktop\EventSystem\Event-System\src\main.cpp(149) : warning C4702: unreachable code
-C:\Users\HP\Desktop\EventSystem\Event-System\src\main.cpp(151) : warning C4702: unreachable code
-C:\Users\HP\Desktop\EventSystem\Event-System\src\main.cpp(153) : warning C4702: unreachable code
 [ 50%]: linking.debug EventSystem.exe
-[100%]: build ok, spent 3.204s
+[100%]: build ok, spent 2.094s
