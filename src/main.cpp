@@ -182,8 +182,6 @@ namespace globals{
     FunnyObject object;
 };
 
-
-
 void LuaVM::Init()
 {
     luaState = luaL_newstate();
