@@ -21,28 +21,12 @@ public:
     }
 
     // -1 if not working
-    LuaClosureID Connect(LuaClosure closure)
-    {
-        m_Closures.emplace_back(closure);
-        EventManager::getInstance().Subscribe(type, this);
-        return 1;
-    }
+    LuaClosureID Connect(LuaClosure closure);
 
     // -1 if not working
-    bool Disconnect()
-    {
-    }
+    bool Disconnect();
 
-    void OnEvent(Event *recieved) override
-    {
-        if (recieved->m_type == type)
-        {
-            for (auto &closure : m_Closures)
-            {
-                closure.CallFunc(LuaVM::getInstance().GetState());
-            }
-        }
-    }
+    void OnEvent(Event* recieved) override;
 };
 
 #endif
