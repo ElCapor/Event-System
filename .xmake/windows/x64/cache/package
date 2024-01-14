@@ -1,52 +1,29 @@
 {
-    raylib = {
-        links = {
-            "raylib",
-            "opengl32"
-        },
-        version = "4.5.0",
-        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
-        syslinks = {
-            "gdi32",
-            "user32",
-            "winmm",
-            "shell32"
-        },
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54]],
-        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]],
-        __requirestr = "raylib",
-        static = true,
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
+    lua = {
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib]],
+        links = "lua",
+        version = "v5.4.6",
+        __requirestr = "lua",
+        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib\lua.lib]],
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01]],
+        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\include\lua]],
         envs = {
             PATH = {
-                [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\bin]],
-                [[C:\Users\HP\AppData\Local\.xmake\packages\c\cmake\3.28.1\a8d422a1b2544979b708dc5b523354d3\bin]],
-                [[C:\Users\HP\AppData\Local\.xmake\packages\o\opengl\latest\8574311f4b544fa89a3d8c3ee79d1929\bin]]
+                [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\bin]],
+                [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\bin]]
             }
         },
+        static = true,
         __enabled = true
     },
     raygui = {
-        links = {
-            "raylib",
-            "opengl32"
-        },
-        version = "3.2",
-        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
         syslinks = {
             "gdi32",
             "user32",
             "winmm",
             "shell32"
         },
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86]],
-        sysincludedirs = {
-            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86\include]],
-            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]]
-        },
-        license = "zlib",
-        __requirestr = "raygui",
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
         envs = {
             PATH = {
                 [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86\bin]],
@@ -55,23 +32,46 @@
                 [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\bin]]
             }
         },
+        version = "3.2",
+        __requirestr = "raygui",
+        license = "zlib",
+        links = {
+            "raylib",
+            "opengl32"
+        },
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86]],
+        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
+        sysincludedirs = {
+            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86\include]],
+            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]]
+        },
         __enabled = true
     },
-    lua = {
-        links = "lua",
-        version = "v5.4.6",
-        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib\lua.lib]],
-        __requirestr = "lua",
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01]],
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib]],
-        static = true,
-        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\include\lua]],
+    raylib = {
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
+        syslinks = {
+            "gdi32",
+            "user32",
+            "winmm",
+            "shell32"
+        },
         envs = {
             PATH = {
-                [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\bin]],
-                [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\bin]]
+                [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\bin]],
+                [[C:\Users\HP\AppData\Local\.xmake\packages\c\cmake\3.28.1\a8d422a1b2544979b708dc5b523354d3\bin]],
+                [[C:\Users\HP\AppData\Local\.xmake\packages\o\opengl\latest\8574311f4b544fa89a3d8c3ee79d1929\bin]]
             }
         },
+        version = "4.5.0",
+        __requirestr = "raylib",
+        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54]],
+        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]],
+        links = {
+            "raylib",
+            "opengl32"
+        },
+        static = true,
         __enabled = true
     }
 }

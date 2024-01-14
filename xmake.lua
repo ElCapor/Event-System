@@ -10,9 +10,17 @@ set_warnings("allextra")
 add_requires("raylib")
 add_requires("raygui")
 add_requires("lua")
+
+rule("copy_resources")
+    on_build(function (target) 
+        os.cp(path.join(os.scriptdir(), "res"), path.join(target:targetdir(), "res"))
+    end)
+
 target("EventSystem")
     set_kind("binary")
     add_files("src/**.cpp")
     add_headerfiles("src/**.hpp")
     add_packages("raylib")
     add_packages("lua")
+
+    add_rules("copy_resources")

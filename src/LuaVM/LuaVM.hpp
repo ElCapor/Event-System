@@ -2,6 +2,7 @@
 #define LUAVM_HPP
 #include <string>
 #include <lua.hpp>
+#include "../Singleton.hpp"
 
 typedef struct
 {

@@ -13,24 +13,7 @@ Took the headers and implenting all the functions by myself - elcapor
 /*
 SINGLETON Implementation
 */
-template <typename T>
-class Singleton {
-public:
-    static T& getInstance() {
-        static T instance; // This will be created only once
-        return instance;
-    }
-
-    // Delete copy constructor and assignment operator to prevent duplication
-    Singleton(const Singleton&) = delete;
-    Singleton& operator=(const Singleton&) = delete;
-
-protected:
-    Singleton() = default;
-    virtual ~Singleton() = default;
-};
-
-
+#include "Singleton.hpp"  
 
 template<typename T>
 using UniqueContainer = std::unordered_set<T>;

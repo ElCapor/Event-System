@@ -29,4 +29,5 @@ public:
     void OnEvent(Event* recieved) override;
 };
 
+RegisterConnectorLua(lua_State* L);
 #endif
