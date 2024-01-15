@@ -23,6 +23,13 @@
         [[src\imgui\imgui_tables.cpp]],
         [[src\imgui\imgui_widgets.cpp]],
         [[src\imgui\rlImGui.cpp]],
-        [[src\main.cpp]]
+        [[src\main.cpp]],
+        [[src\metapp\src\metaclass.cpp]],
+        [[src\metapp\src\metaitem.cpp]],
+        [[src\metapp\src\metapp\thirdparty\tcb\span.hpp]],
+        [[src\metapp\src\metarepo.cpp]],
+        [[src\metapp\src\metatype.cpp]],
+        [[src\metapp\src\utility.cpp]],
+        [[src\metapp\src\variant.cpp]]
     }
 }

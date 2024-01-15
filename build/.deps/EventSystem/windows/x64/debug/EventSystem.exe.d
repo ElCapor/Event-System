@@ -11,7 +11,13 @@
         [[build\.objs\EventSystem\windows\x64\debug\src\imgui\TextEditor.cpp.obj]],
         [[build\.objs\EventSystem\windows\x64\debug\src\LuaVM\EventConnector.cpp.obj]],
         [[build\.objs\EventSystem\windows\x64\debug\src\LuaVM\LuaVM.cpp.obj]],
-        [[build\.objs\EventSystem\windows\x64\debug\src\main.cpp.obj]]
+        [[build\.objs\EventSystem\windows\x64\debug\src\main.cpp.obj]],
+        [[build\.objs\EventSystem\windows\x64\debug\src\metapp\src\metaclass.cpp.obj]],
+        [[build\.objs\EventSystem\windows\x64\debug\src\metapp\src\metaitem.cpp.obj]],
+        [[build\.objs\EventSystem\windows\x64\debug\src\metapp\src\metarepo.cpp.obj]],
+        [[build\.objs\EventSystem\windows\x64\debug\src\metapp\src\metatype.cpp.obj]],
+        [[build\.objs\EventSystem\windows\x64\debug\src\metapp\src\utility.cpp.obj]],
+        [[build\.objs\EventSystem\windows\x64\debug\src\metapp\src\variant.cpp.obj]]
     },
     values = {
         [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\bin\HostX64\x64\link.exe]],

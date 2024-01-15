@@ -9,6 +9,8 @@
 #include "imgui/rlImGui.h"
 #include "imgui/imgui.h"
 
+#include "metapp/src/metapp/allmetatypes.h"
+
 
 template <typename T>
 class LuaEvent;
