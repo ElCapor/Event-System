@@ -1,4 +1,7 @@
 {
+    files = {
+        [[C:\Users\HP\Desktop\EventSystem\Event-System\xmake.lua]]
+    },
     values = {
         [[src\Game\Game.hpp]],
         [[src\Game\Scene.hpp]],
@@ -21,8 +24,5 @@
         [[src\imgui\imgui_widgets.cpp]],
         [[src\imgui\rlImGui.cpp]],
         [[src\main.cpp]]
-    },
-    files = {
-        [[C:\Users\HP\Desktop\EventSystem\Event-System\xmake.lua]]
     }
 }

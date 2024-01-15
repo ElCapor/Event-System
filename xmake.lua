@@ -17,6 +17,7 @@ add_requires("rttr")
 
 target("EventSystem")
     set_kind("binary")
+    set_languages("c++20")
     add_files("src/**.cpp")
     add_headerfiles("src/**.hpp")
     add_packages("raylib")

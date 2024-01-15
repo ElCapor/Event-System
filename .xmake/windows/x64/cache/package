@@ -1,5 +1,25 @@
 {
+    rttr = {
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f]],
+        __requirestr = "rttr",
+        license = "MIT",
+        static = true,
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\lib]],
+        links = "librttr_core",
+        version = "0.9.6",
+        envs = {
+            PATH = {
+                [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\bin]],
+                [[C:\Users\HP\AppData\Local\.xmake\packages\c\cmake\3.28.1\a8d422a1b2544979b708dc5b523354d3\bin]]
+            }
+        },
+        __enabled = true,
+        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\lib\librttr_core.lib]],
+        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\include]]
+    },
     raygui = {
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86]],
+        __requirestr = "raygui",
         license = "zlib",
         syslinks = {
             "gdi32",
@@ -7,6 +27,15 @@
             "winmm",
             "shell32"
         },
+        sysincludedirs = {
+            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86\include]],
+            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]]
+        },
+        links = {
+            "raylib",
+            "opengl32"
+        },
+        version = "3.2",
         envs = {
             PATH = {
                 [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86\bin]],
@@ -15,29 +44,26 @@
                 [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\bin]]
             }
         },
-        sysincludedirs = {
-            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86\include]],
-            [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]]
-        },
-        __requirestr = "raygui",
-        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
         __enabled = true,
-        links = {
-            "raylib",
-            "opengl32"
-        },
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raygui\3.2\a64165077b5c436d9470418c45179b86]],
-        version = "3.2"
+        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]]
     },
     raylib = {
-        static = true,
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54]],
+        __requirestr = "raylib",
         syslinks = {
             "gdi32",
             "user32",
             "winmm",
             "shell32"
         },
+        static = true,
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
+        links = {
+            "raylib",
+            "opengl32"
+        },
+        version = "4.5.0",
         envs = {
             PATH = {
                 [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\bin]],
@@ -45,51 +71,25 @@
                 [[C:\Users\HP\AppData\Local\.xmake\packages\o\opengl\latest\8574311f4b544fa89a3d8c3ee79d1929\bin]]
             }
         },
-        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]],
-        __requirestr = "raylib",
+        __enabled = true,
         libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib\raylib.lib]],
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\lib]],
-        __enabled = true,
-        links = {
-            "raylib",
-            "opengl32"
-        },
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54]],
-        version = "4.5.0"
-    },
-    rttr = {
-        license = "MIT",
-        static = true,
-        envs = {
-            PATH = {
-                [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\bin]],
-                [[C:\Users\HP\AppData\Local\.xmake\packages\c\cmake\3.28.1\a8d422a1b2544979b708dc5b523354d3\bin]]
-            }
-        },
-        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\include]],
-        __requirestr = "rttr",
-        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\lib\librttr_core.lib]],
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\lib]],
-        __enabled = true,
-        links = "librttr_core",
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f]],
-        version = "0.9.6"
+        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]]
     },
     lua = {
+        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01]],
+        __requirestr = "lua",
         static = true,
+        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib]],
+        links = "lua",
+        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib\lua.lib]],
+        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\include\lua]],
         envs = {
             PATH = {
                 [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\bin]],
                 [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\bin]]
             }
         },
-        sysincludedirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\include\lua]],
-        __requirestr = "lua",
-        libfiles = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib\lua.lib]],
-        linkdirs = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\lib]],
-        __enabled = true,
-        links = "lua",
-        installdir = [[C:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01]],
-        version = "v5.4.6"
+        version = "v5.4.6",
+        __enabled = true
     }
 }

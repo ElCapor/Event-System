@@ -1,25 +1,9 @@
 {
     cmdlines = {
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\default_target.lua]],
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\config.lua]],
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\update_intellisense.lua .vscode clangd]],
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\explorer.lua]],
         "xmake -w",
-        "xmake run EventSystem",
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\default_target.lua]],
-        "xmake -w",
-        "xmake run EventSystem",
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\default_target.lua]],
-        "xmake -w",
-        "xmake run EventSystem",
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\default_target.lua]],
-        "xmake -w",
-        "xmake run EventSystem",
-        "xmake -w",
-        "xmake -w",
-        "xmake -w",
-        "xmake -w",
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\target_informations.lua default]],
-        "xmake -w",
-        [[xmake lua "C:\\\\Program Files\\\\xmake\\\\modules\\\\private\\\\utils\\\\statistics.lua"]],
-        [[xmake lua "C:\\\\Program Files\\\\xmake\\\\actions\\\\build\\\\cleaner.lua"]],
-        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\target_informations.lua default]]
+        [[xmake l c:\Users\HP\.vscode\extensions\tboox.xmake-vscode-2.2.8\assets\explorer.lua]]
     }
 }

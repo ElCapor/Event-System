@@ -8,6 +8,64 @@
 #include "Game/Game.hpp"
 #include "imgui/rlImGui.h"
 #include "imgui/imgui.h"
+
+
+template <typename T>
+class LuaEvent;
+
+template <typename EventType>
+class LuaEventListener
+{
+protected:
+    friend class LuaEvent<EventType>;
+    virtual void OnEvent(LuaEvent<EventType>* recieved) = 0;
+};
+
+// attempt at making yet another system ?
+template <typename EventType>
+class LuaEvent
+{
+public:
+    explicit LuaEvent(EventType type) : m_type(type) {}
+    EventType m_type;
+
+    static void FireEvent(LuaEvent<EventType>* evt)
+    {
+        for (auto listener : m_listeners)
+        {
+            listener->OnEvent(evt);
+        }
+    }
+
+    static void Subscribe(LuaEventListener<EventType>* subscriber)
+    {
+        m_listeners.emplace_back(subscriber);
+    }
+    public:
+    static std::vector<LuaEventListener<EventType>*> m_listeners;
+};
+
+
+enum LuaEvents
+{
+    MenuStart
+};
+
+std::vector<LuaEventListener<LuaEvents>*> LuaEvent<LuaEvents>::m_listeners = {};
+
+class MenuStartListener : public LuaEventListener<LuaEvents>
+{
+    void OnEvent(LuaEvent<LuaEvents>* evt) override
+    {
+        if (evt->m_type == LuaEvents::MenuStart)
+        {
+            std::cout << "Got event" << std::endl;
+        }
+    }
+};
+
+
+
 /*
 
 GENERAL TODO:
@@ -32,6 +90,10 @@ public:
     void OnEnter() override
     {
         std::cout << "Hello" << std::endl;
+        LuaEvent<LuaEvents> MenuEvt(LuaEvents::MenuStart);
+        MenuStartListener listener;
+        LuaEvent<LuaEvents>::Subscribe(&listener);
+        LuaEvent<LuaEvents>::FireEvent(&MenuEvt);
         rlImGuiSetup(true);
     }
 

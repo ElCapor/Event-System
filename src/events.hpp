@@ -7,7 +7,7 @@
 /*
 https://www.linkedin.com/pulse/students-take-implementing-event-systems-games-using-matthew-rosen
 
-Took the headers and implenting all the functions by myself - elcapor
+Took the headers and implemented all the functions by myself - elcapor
 */
 
 /*

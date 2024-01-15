@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "chrono": "cpp",
+        "optional": "cpp",
+        "regex": "cpp",
+        "system_error": "cpp"
     }
 }
