@@ -1,1 +1,19 @@
-[100%]: build ok, spent 0.078s
+[  6%]: compiling.debug src\imgui\imgui.cpp
+[  6%]: compiling.debug src\imgui\imgui_demo.cpp
+[  6%]: compiling.debug src\imgui\imgui_draw.cpp
+[  6%]: compiling.debug src\imgui\imgui_impl_dx11.cpp
+[  6%]: compiling.debug src\imgui\imgui_impl_win32.cpp
+[  6%]: compiling.debug src\imgui\imgui_tables.cpp
+[  6%]: compiling.debug src\imgui\imgui_widgets.cpp
+[  6%]: compiling.debug src\imgui\rlImGui.cpp
+[  6%]: compiling.debug src\imgui\TextEditor.cpp
+[ 20%]: compiling.debug src\main.cpp
+C:\Users\HP\Desktop\EventSystem\Event-System\src\Game/Game.hpp(22): warning C4002: too many arguments for function-like macro invocation 'Assert_1'
+C:\Users\HP\Desktop\EventSystem\Event-System\src\Game/Game.hpp(27): warning C4002: too many arguments for function-like macro invocation 'Assert_1'
+C:\Users\HP\Desktop\EventSystem\Event-System\src\Game/Game.hpp(67): warning C4002: too many arguments for function-like macro invocation 'Assert_1'
+C:\Users\HP\Desktop\EventSystem\Event-System\src\Game/Game.hpp(69): warning C4002: too many arguments for function-like macro invocation 'Assert_1'
+src\imgui\TextEditor.cpp(1445): warning C4189: 'lineSize': local variable is initialized but not referenced
+[ 86%]: linking.debug EventSystem.exe
+create ok!
+compile_commands.json updated!
+[100%]: build ok, spent 10.078s

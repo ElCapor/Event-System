@@ -1,4 +1,24 @@
 {
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\bin\HostX64\x64\cl.exe]],
+        {
+            "-nologo",
+            "-Zi",
+            "-FS",
+            [[-Fdbuild\windows\x64\debug\compile.EventSystem.pdb]],
+            "-W4",
+            "-Od",
+            "-std:c++20",
+            "/EHsc",
+            "/utf-8",
+            "-external:W0",
+            [[-external:IC:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]],
+            "-external:W0",
+            [[-external:IC:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\include\lua]],
+            "-external:W0",
+            [[-external:IC:\Users\HP\AppData\Local\.xmake\packages\r\rttr\0.9.6\3a0b2dfdb03949b28773ccdbbd7dd04f\include]]
+        }
+    },
     depfiles_cl_json = "{\
     \"Version\": \"1.2\",\
     \"Data\": {\
@@ -89,7 +109,51 @@
             \"c:\\\\users\\\\hp\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\l\\\\lua\\\\v5.4.6\\\\59299296d76b4d759e413f446ececb01\\\\include\\\\lua\\\\luaconf.h\",\
             \"c:\\\\users\\\\hp\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\l\\\\lua\\\\v5.4.6\\\\59299296d76b4d759e413f446ececb01\\\\include\\\\lua\\\\lualib.h\",\
             \"c:\\\\users\\\\hp\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\l\\\\lua\\\\v5.4.6\\\\59299296d76b4d759e413f446ececb01\\\\include\\\\lua\\\\lauxlib.h\",\
-            \"c:\\\\users\\\\hp\\\\desktop\\\\eventsystem\\\\event-system\\\\src\\\\singleton.hpp\"\
+            \"c:\\\\users\\\\hp\\\\desktop\\\\eventsystem\\\\event-system\\\\src\\\\singleton.hpp\",\
+            \"c:\\\\users\\\\hp\\\\desktop\\\\eventsystem\\\\event-system\\\\src\\\\luavm\\\\eventconnector.hpp\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\vector\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\__msvc_bit_utils.hpp\",\
+            \"c:\\\\users\\\\hp\\\\desktop\\\\eventsystem\\\\event-system\\\\src\\\\luavm\\\\luaclosure.hpp\",\
+            \"c:\\\\users\\\\hp\\\\appdata\\\\local\\\\.xmake\\\\packages\\\\l\\\\lua\\\\v5.4.6\\\\59299296d76b4d759e413f446ececb01\\\\include\\\\lua\\\\lua.hpp\",\
+            \"c:\\\\users\\\\hp\\\\desktop\\\\eventsystem\\\\event-system\\\\src\\\\events.hpp\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\unordered_set\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xhash\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\cmath\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\list\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xbit_ops.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xnode_handle.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\map\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xtree\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\iostream\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\istream\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\ostream\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\ios\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xlocnum\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\iterator\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\streambuf\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xiosbase\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\share.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\system_error\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\__msvc_system_error_abi.hpp\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\cerrno\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\stdexcept\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xcall_once.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xerrc.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\atomic\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xatomic_wait.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xthreads.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xtimec.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\ctime\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\time.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xlocale\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\memory\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\typeinfo\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\vcruntime_typeinfo.h\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xfacet\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\xlocinfo\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\__msvc_xlocinfo_types.hpp\",\
+            \"c:\\\\program files\\\\microsoft visual studio\\\\2022\\\\community\\\\vc\\\\tools\\\\msvc\\\\14.38.33130\\\\include\\\\clocale\",\
+            \"c:\\\\program files (x86)\\\\windows kits\\\\10\\\\include\\\\10.0.22621.0\\\\ucrt\\\\locale.h\"\
         ],\
         \"ImportedModules\": [],\
         \"ImportedHeaderUnits\": []\
@@ -97,23 +161,5 @@
 }",
     files = {
         [[src\LuaVM\LuaVM.cpp]]
-    },
-    values = {
-        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\bin\HostX64\x64\cl.exe]],
-        {
-            "-nologo",
-            "-Zi",
-            "-FS",
-            [[-Fdbuild\windows\x64\debug\compile.EventSystem.pdb]],
-            "-W4",
-            "-Od",
-            "-std:c++20",
-            "/EHsc",
-            "/utf-8",
-            "-external:W0",
-            [[-external:IC:\Users\HP\AppData\Local\.xmake\packages\r\raylib\4.5.0\bb0d541b26eb44b6b8e7d3d61afc9a54\include]],
-            "-external:W0",
-            [[-external:IC:\Users\HP\AppData\Local\.xmake\packages\l\lua\v5.4.6\59299296d76b4d759e413f446ececb01\include\lua]]
-        }
     }
 }

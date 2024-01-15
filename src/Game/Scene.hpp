@@ -18,3 +18,5 @@ public:
 	virtual void OnDraw() = 0; // on scene draw
 	virtual void OnExit() = 0; // on scene exit
 };
+
+#endif

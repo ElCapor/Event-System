@@ -1,5 +1,6 @@
 #include "LuaVM.hpp"
 #include "EventConnector.hpp"
+#include <iostream>
 void LuaVM::Init()
 {
     luaState = luaL_newstate();

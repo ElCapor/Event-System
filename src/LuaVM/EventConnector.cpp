@@ -3,7 +3,7 @@
 LuaClosureID EventConnector::Connect(LuaClosure closure)
 {
     m_Closures.emplace_back(closure);
-    EventManager::getInstance().Subscribe(type, this);
+    EventManager::getInstance()->Subscribe(type, this);
     return 1;
 }
 
@@ -29,8 +29,8 @@ auto DestroyConnector = [](lua_State* L) -> int
 
 auto IndexConnector = [](lua_State* L) -> int
 {
-    assert(lua_isuserdata(L, -2));// i want full userdata or kys
-    assert(lua_isstring(L, -1)); // cant index shit with no name fr
+    //assert(lua_isuserdata(L, -2));// i want full userdata or kys
+    //assert(lua_isstring(L, -1)); // cant index shit with no name fr
 
     EventConnector* obj = (EventConnector*)lua_touserdata(L, -2);
     const char* index = lua_tostring(L, -1);
@@ -60,6 +60,7 @@ auto ConnectEvent = [](lua_State* L) -> int
     lua_pushinteger(L, cl.id);
     return 1;
 };
+
 void RegisterConnectorLua(lua_State* L)
 {
     lua_newtable(L);

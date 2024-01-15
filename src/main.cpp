@@ -6,6 +6,8 @@
 #include "LuaVM/LuaVM.hpp"
 #include "LuaVM/EventConnector.hpp"
 #include "Game/Game.hpp"
+#include "imgui/rlImGui.h"
+#include "imgui/imgui.h"
 /*
 
 GENERAL TODO:
@@ -21,9 +23,16 @@ LuaClosureID LuaClosure::maxID = -1;
 
 class MenuScene : public Scene
 {
-    void OnEnter() override
+public:
+    MenuScene()
     {
 
+    }
+
+    void OnEnter() override
+    {
+        std::cout << "Hello" << std::endl;
+        rlImGuiSetup(true);
     }
 
     void OnUpdate() override
@@ -33,18 +42,37 @@ class MenuScene : public Scene
 
     void OnDraw() override
     {
+        rlImGuiBegin();
 
+        ImGui::Begin("Test");
+
+        ImGui::End();
+
+        rlImGuiEnd();
     }
 
     void OnExit() override
     {
+        rlImGuiShutdown();
+        std::cout << "Ou" << std::endl;
+    }
 
+    std::string GetName() override
+    {
+        return "MenuScene";
     }
 };
 
 class LuaGame : public Game
 {
 public:
+
+    LuaVM* luaVM;
+
+    LuaGame() : Game(800, 600, "Lua")
+    {
+        luaVM = LuaVM::getInstance();
+    }
 
     void OnLoad() override
     {
@@ -70,7 +98,7 @@ public:
     void Main() override
     {
         Game::Main();
-    }
+    }    
 };
 
 LuaGame game;
