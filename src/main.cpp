@@ -81,6 +81,9 @@ never send structures through pointers when inside lua bound functions or else t
 //todo : move this into a cpp file
 LuaClosureID LuaClosure::maxID = -1;
 
+
+// FUCK TEMPLATES FFR
+
 class MenuScene : public Scene
 {
 public:
