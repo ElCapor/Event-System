@@ -82,7 +82,10 @@ never send structures through pointers when inside lua bound functions or else t
 LuaClosureID LuaClosure::maxID = -1;
 
 
-// FUCK TEMPLATES FFR
+// FUCK TEMPLATES FFRa
+
+
+// PLS KEEP ME ACTIVE GITHUB
 
 class MenuScene : public Scene
 {
